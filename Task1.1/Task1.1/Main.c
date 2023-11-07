@@ -6,6 +6,7 @@
 // Функция для поиска аргумента a
 void get_a(float x, float y, float z)
 {
+	setlocale(LC_ALL, "Russian");
 	float a = (2 * cos(x - M_PI / 6)) / ((1 / 2) + pow(sin(y), 2)); // Формула a
 	printf_s("a=%f", a);
 }
