@@ -1,35 +1,56 @@
 #include <stdio.h>
-#include <Locale.h>
+#include <locale.h>
+
+// Функция для ввода положительного числа
+float inputPositiveNumber(const char* prompt) 
+{
+    float number;
+    printf_s(prompt);
+    if (scanf_s("%f", &number) != 1 || number <= 0) 
+	{
+        printf_s("Некорректное значение. Пожалуйста, введите положительное число.\n");
+        return inputPositiveNumber(prompt);
+    }
+    return number;
+}
+
+// Функция для вычисления длины второй стороны
+float B(float a, float n) 
+{
+    return n * a;
+}
+
+// Функция для вычисления периметра
+float Perimeter(float a, float b) 
+{
+    return 2 * (a + b);
+}
+
+// Функция для вычисления площади
+float Area(float a, float b) 
+{
+    return a * b;
+}
+
 int main() 
 {
     setlocale(LC_ALL, "Russian");
     float a, n, b, perimeter, area;
 
-    // Ввод данных пользователем ******
-    printf_s("Введите длину одной стороны (a): ");
-    if (scanf_s("%f", &a) != 1 || a <= 0)
-    {
-        printf_s("Некорректное значение. Пожалуйста, введите положительное число.\n");
-        return 1; // Завершаем программу с ошибкой *******
-    }
+    // Ввод данных пользователем
+    a = inputPositiveNumber("Введите длину стороны (a): ");
+    n = inputPositiveNumber("Введите коэффициент (n): ");
 
-    printf_s("Введите коэффициент (n): ");
-    if (scanf_s("%f", &n) != 1 || n <= 0)
-    {
-        printf_s("Некорректное значение. Пожалуйста, введите положительное число.\n");
-        return 1; // Завершаем программу с ошибкой ******
-    }
+    // Вычисление длины второй стороны
+    b = B(a, n);
 
-    // Вычисление длины второй стороны и периметра
-    b = n * a;
-    perimeter = 2 * (a + b);
+    // Вычисление периметра и площади
+    perimeter = Perimeter(a, b);
+    area = Area(a, b);
 
-    // Вычисление площади ***
-    area = a * b;
-
-    // Вывод результатов  *****
-    printf_s("Периметр прямоугольника: %.2f\n", perimeter);
-    printf_s("Площадь прямоугольника: %.2f\n", area);
+    // Вывод результатов
+    printf("Периметр прямоугольника: %.2f\n", perimeter);
+    printf("Площадь прямоугольника: %.2f\n", area);
 
     return 0;
 }
