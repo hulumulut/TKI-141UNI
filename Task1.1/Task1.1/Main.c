@@ -2,21 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <errno.h>
 #include <locale.h>
-// Функция для поиска аргумента a
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРёСЃРєР° Р°СЂРіСѓРјРµРЅС‚Р° a
 void get_a(float x, float y, float z)
 {
-	float a = (2 * cos(x - M_PI / 6)) / ((1 / 2) + pow(sin(y), 2)); // Формула a
+	float a = (2 * cos(x - M_PI / 6)) / ((1 / 2) + pow(sin(y), 2)); // Р¤РѕСЂРјСѓР»Р° a
 	printf_s("a=%f", a);
 }
-// Функция для поиска аргумента b
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРёСЃРєР° Р°СЂРіСѓРјРµРЅС‚Р° b
 void get_b(float x, float y, float z)
 {
-	float b = 1 + (pow(z, 2)) / (3 + (pow(z, 2) / 5)); // Формула b
+	float b = 1 + (pow(z, 2)) / (3 + (pow(z, 2) / 5)); // Р¤РѕСЂРјСѓР»Р° b
 	printf_s("b=%f", b);
 }
-// Значения x,y,z
+// Р—РЅР°С‡РµРЅРёСЏ x,y,z
 int main()
 {
 	get_a(1.426, -1.22, 3.5);
