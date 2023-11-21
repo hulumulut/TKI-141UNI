@@ -3,41 +3,48 @@
 #include <math.h>
 #include <locale.h>
 
-int main() 
-{
+// Определение перечислимого типа для условий
+enum Condition {
+    CONDITION_1,
+    CONDITION_2
+};
+
+int main() {
+    // Значение a (заодно установка языка)
     setlocale(LC_ALL, "Russian");
-    // Ввод радиуса шара с условием
-    double radius;
-    printf_s("Введите радиус шара(положительный и больше 0): ");
-    scanf_s("%lf", &radius);
-    if (radius <= 0.0)
-    { 
-        printf_s("Некорректные данные");
-    return 0;
+    int a = 2.5;
+
+    // Ввод значение X
+    double x;
+    printf_s("Введите значение X: ");
+    scanf_s("%lf", &x);
+
+    // Определение условия
+    enum Condition condition;
+    if (x > a || x <= a) {
+        if (x > a) {
+            condition = CONDITION_1;
+        }
+        else {
+            condition = CONDITION_2;
+        }
     }
 
-    // Выбор поиска
-    int choice;
-    printf_s("Выберите что хотите найти (1 - объем, 2 - площадь поверхности): ");
-    scanf_s("%d", &choice);
+    // Решение разветвленного уравнения с использованием switch
+    double y;
+    switch (condition) {
+    case CONDITION_1:
+        y = x * pow(x - a, 1.0 / 3.0);
+        printf("Значение y с 1ым условием: %lf\n", y);
+        break;
 
-    // Итог
-    if (choice == 1) 
-    {
-        // Объем шара
-        double volume = (4.0 / 3.0) * M_PI * pow(radius, 3);
-        printf_s("Объем шара: %lf\n", volume);
-    }
-    else if (choice == 2) 
-    {
-        // Площадь поверхности шара
-        double area = 4.0 * M_PI * pow(radius, 2);
-        printf_s("Площадь поверхности шара: %lf\n", area);
-    }
-    else 
-    {
-        // В случае некорректного выбора формулы
-        printf_s("Некорректный выбор формулы.\n");
+    case CONDITION_2:
+        y = x * sin(a * x);
+        printf("Значение y с 2ым условием: %lf\n", y);
+        break;
+
+    default:
+        printf("Некорректное условие\n");
         return 1;
     }
 
