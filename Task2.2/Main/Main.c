@@ -1,32 +1,91 @@
-﻿#define _USE_MATH_DEFINES
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <math.h>
 #include <locale.h>
+#include <float.h>
 
+/**
+* @brief используется для определения типа условия
+*/ 
+enum Condition 
+{
+    CONDITION_1,
+    CONDITION_2
+};
+/**
+* @brief условия получения y1 и y2
+*/
+double get_y1(double x, double a);
+double get_y2(double x, double a);
+
+/**
+* @brief основная функция в программе
+* @return 0 программа завершается без ошибки
+*/
 int main() 
 {
-	// Значение a (заодно установка языка)
-	setlocale(LC_ALL, "Russian");
-	int a = 2.5;
+    // Значение a (заодно установка языка)
+    setlocale(LC_ALL, "Russian");
+    double a = 2.5;
 
-	// Ввод значение X
-	double x;
-	printf_s("введите значение X:");
-	scanf_s("%lf", &x);
+    // Ввод значение X
+    double x;
+    printf("Введите значение X: ");
+    if (scanf_s("%lf", &x) != 1) {
+        printf("Ошибка ввода!\n");
+        return 1;
+    }
 
-	// Решение разветленного уравнения
-	if (x > a || x <= a)
-	{
-		if (x > a) // первое решение, если значение x больше a
-		{
-			double y = x * pow(x - a, 1.0 / 3.0);
-			printf("Значение y равно с 1ым условием: %fl\n", y);
-		}
-		else if (x <= a) // второе решение, если значение x меньше или равно a
-		{
-			double y = x * sin(a * x);
-			printf("Значение y равно c 2ым условием: %fl\n", y);
-		}
-	}
-	return 0;
+    // Определение условия
+    enum Condition condition;
+
+    // Сравнение через DBL_EPSILON
+    if (fabs(x - a) < DBL_EPSILON) 
+    {
+        condition = CONDITION_1;
+    }
+    else 
+    {
+        if (x > a) 
+        {
+            condition = CONDITION_1;
+        }
+        else {
+            condition = CONDITION_2;
+        }
+    }
+
+    // Решение разветвленного уравнения с использованием switch
+    double y1;
+    double y2;
+    switch (condition) 
+    {
+    case CONDITION_1:
+        y1 = get_y1( x, a);
+        printf("Значение y с 1ым условием: %lf\n", y1);
+        break;
+
+    case CONDITION_2:
+        y2 = get_y2( x,  a);
+        printf("Значение y с 2ым условием: %lf\n", y2);
+        break;
+
+    default:
+        printf("Некорректное условие\n");
+        return 1;
+    }
+
+    return 0;
+}
+
+
+/**
+* @brief нахождение значения y1 и y2
+*/
+double get_y1(double x, double a)
+{
+    return (x * pow(x - a, 1.0 / 3.0));
+}
+double get_y2(double x, double a)
+{
+    return (x * sin(a * x));
 }
