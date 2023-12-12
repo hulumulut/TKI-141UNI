@@ -4,29 +4,29 @@
 #include <math.h>
 #include <locale.h>
 /**
-* @void неизменяеммый указатель, обращающийся к данным в int main
-* @setlocal переводит язык документа на русский
-* @float функция, благодаря которой находится число, заданное уравнением
-* @printf_s печатает ответ функции
-* @int главная функция, дающее целые числа в итоге
+* @brief ищем аргумент a
 */
-
-// Функция для поиска аргумента a
 void get_a(float x, float y, float z)
 {
-	setlocale(LC_ALL, "Russian");
 	float a = (2 * cos(x - M_PI / 6)) / ((1 / 2) + pow(sin(y), 2)); // Формула a
 	printf_s("a=%f", a);
 }
-// Функция для поиска аргумента b
+/**
+* @brief ищем аргумент b
+*/
 void get_b(float x, float y, float z)
 {
 	float b = 1 + (pow(z, 2)) / (3 + (pow(z, 2) / 5)); // Формула b
 	printf_s("b=%f", b);
 }
-// Значения x,y,z
+/**
+* @brief основная функция программа
+* @param get_a - параметры x,y,z для поиска аргумента a
+* @param get_b - параметры x,y,z для поиска аргумента b
+*/
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 	get_a(1.426, -1.22, 3.5);
 	get_b(1.426, -1.22, 3.5);
 }

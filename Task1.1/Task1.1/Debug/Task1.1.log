@@ -1,0 +1,8 @@
+﻿  Main.c
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(11,1): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(19,1): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(30,13): warning C4305: функция: усечение из "double" в "float"
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(30,20): warning C4305: функция: усечение из "double" в "float"
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(31,13): warning C4305: функция: усечение из "double" в "float"
+C:\Users\student\source\reposTKI-141\Task1.1\Task1.1\Main.c(31,20): warning C4305: функция: усечение из "double" в "float"
+  Task1.1.vcxproj -> C:\Users\student\source\reposTKI-141\Task1.1\Debug\Task1.1.exe
