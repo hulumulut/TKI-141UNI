@@ -6,7 +6,6 @@
 * @param числа, заданные пользователем
 * @return завершает функцию с выводом числа пользователя, проверенного программой
 */
-
 float inputPositiveNumber(const char* prompt);
 
 /**
@@ -15,7 +14,6 @@ float inputPositiveNumber(const char* prompt);
 * @param число, которое находит программа путем заданного уравнения
 * @return завершает функцию с выводом результата
 */ 
-
 float B(float a, float n);
 
 /**
@@ -24,7 +22,6 @@ float B(float a, float n);
 * @param число, которое находит программа путем заданного уравнения
 * @return завершает функцию с выводом результата
 */ 
-
 float Perimeter(float a, float b);
 
 /**
@@ -33,7 +30,6 @@ float Perimeter(float a, float b);
 * @param число, которое находит программа путем заданного уравнения
 * @return завершает функцию с выводом результата
 */ 
-
 float Area(float a, float b);
 
 /**
