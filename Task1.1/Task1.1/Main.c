@@ -7,14 +7,12 @@
 * @brief ищем аргумент a
 * @param аргумент a, плюс заданное к нему уравнение
 */
-
 float get_a(float x, float y, float z);
 
 /**
 * @brief ищем аргумент b
 * @param аргумент b, плюс заданное к нему уравнение
 */
-
 float get_b(float x, float y, float z);
 
 /**
