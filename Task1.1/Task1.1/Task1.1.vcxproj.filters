@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="Task1.1.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
