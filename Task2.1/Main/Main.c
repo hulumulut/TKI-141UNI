@@ -2,15 +2,20 @@
 #include <stdio.h>
 #include <math.h>
 #include <locale.h>
+#include <errno.h>
 
+enum area_or_volume {
+    area = 1,
+    volume = 2
+};
 double get_volume(double radius);
 double get_area(double radius);
+int get_choice();
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
     double radius;
-    int choice();
     printf_s("Введите радиус шара(положительный и больше 0): ");
     scanf_s("%lf", &radius);
     if (radius <= 0.0)
@@ -18,31 +23,38 @@ int main()
         printf_s("Некорректные данные");
         return 0;
     }
-    printf_s("площадь равна: %lf\n",get_area(radius));
-    printf_s("объем равен: %lf\n", get_volume(radius));
-}
-
-    int choice ()
-{
-    printf("Выберите что хотите найти (1 - объем, 2 - площадь поверхности): ");
-    scanf("%d", &choice);
-    if (choice == 1)
+    int number = get_choice();
+    enum area_or_volume j = (enum area_or_volume)(number);
+    switch (j) 
     {
-        double get_volume(double radius);
-        return 0;
+        case area: 
+        {
+            double area = get_area(radius);
+            printf_s("площадь равна: %lf\n", get_area(radius));
+            break;
+        }
+        case volume: 
+        {
+            double volume = get_volume(radius);
+            printf_s("объем равен: %lf\n", get_volume(radius));
+            break;
+        }
     }
-    else if (choice == 2)
-    {
-        double get_area(double radius);
-        return 0;
-    }
-    else
-    {
-        printf_s("Некорректный выбор формулы.\n");
-        return 1;
-    }
-
     return 0;
+}
+    
+int get_choice ()
+{
+    int choice;
+    puts("Введите 1, если нужен площадь, 2 - если объем: ");
+    int result = scanf_s("%d", &choice);
+    if (result != 1)
+    {
+        errno = EIO;
+        perror("Ошибка ввода");
+        abort();
+    }
+    return choice;
 }
 
 double get_volume(double radius) {
