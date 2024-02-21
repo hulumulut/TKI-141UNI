@@ -3,15 +3,37 @@
 #include <math.h>
 #include <locale.h>
 #include <errno.h>
-
+/**
+* @brief Присваивает значения константам area и volume
+*/
 enum area_or_volume {
     area = 1,
     volume = 2
 };
+
+/**
+* @brief ищет объем
+* @param заданный пользователем радиус
+* @return возвращает значение объема
+*/
 double get_volume(double radius);
+
+/**
+* @brief ищет площадь
+* @param заданный пользователем радиус
+* @return возвращает значение площади
+*/
 double get_area(double radius);
+
+/**
+* @brief проверка, что пользователь ввел число
+* @return завершает программу ошибкой, если вводимое значение не число
+*/
 int get_choice();
 
+/**
+* @brief основная функция
+*/
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -46,7 +68,9 @@ int main()
 int get_choice ()
 {
     int choice;
-    puts("Введите 1, если нужен площадь, 2 - если объем: ");
+    printf("%s\n", "Введите, что хотите найти, площадь или объем ");
+    printf("Площадь - %d\n", (int)area);
+    printf("Объем - %d\n", (int)volume);
     int result = scanf_s("%d", &choice);
     if (result != 1)
     {
