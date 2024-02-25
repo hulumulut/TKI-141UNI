@@ -1,6 +1,0 @@
-﻿  Task1.1.c
-C:\Users\hulumulu\source\repos\Task1.1\Task1.1\Task1.1.c(19,17): warning C4305: инициализация: усечение из "double" в "const float"
-C:\Users\hulumulu\source\repos\Task1.1\Task1.1\Task1.1.c(20,17): warning C4305: инициализация: усечение из "double" в "const float"
-C:\Users\hulumulu\source\repos\Task1.1\Task1.1\Task1.1.c(31,39): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\Users\hulumulu\source\repos\Task1.1\Task1.1\Task1.1.c(37,17): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-  Task1.1.vcxproj -> C:\Users\hulumulu\source\repos\Task1.1\x64\Debug\Task1.1.exe
