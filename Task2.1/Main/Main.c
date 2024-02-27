@@ -19,39 +19,42 @@ enum area_or_volume {
 
 /**
 * @brief ищет объем
-* @param заданный пользователем радиус
+* @param radius - заданный пользователем радиус
 * @return возвращает значение объема
 */
 double get_volume(double radius);
 
 /**
 * @brief ищет площадь
-* @param заданный пользователем радиус
+* @param radius - заданный пользователем радиус
 * @return возвращает значение площади
 */
 double get_area(double radius);
 
 /**
-* @brief проверка, что пользователь ввел число
+* @brief проверка, что пользователь ввел число(его выбор)
 * @remarks завершает программу ошибкой, если вводимое значение не число
+* @return число(выбор)
 */
 int get_choice();
 
 /**
+* @brief проверка, что пользователь ввел число
+* @remarks завершает программу ошибкой, если вводимое значение не число
+* @return значение
+*/
+double get_value();
+
+/**
 * @brief Точка входа в программу
-* @return Возвращает 0, если программа работает верно, иначе 0
+* @return Возвращает 0, если программа работает верно
 */
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    printf_s("Введите радиус шара(положительный и больше 0): ");
+    puts("Введите радиус шара(положительный и больше 0): ");
     double radius;
-    scanf_s("%lf", &radius);
-    if (radius <= 0.0)
-    {
-        printf_s("Некорректные данные");
-        return 1;
-    }
+    radius = get_value();
     int number = get_choice();
     enum area_or_volume j = (enum area_or_volume)(number);
     switch (j) 
@@ -77,7 +80,20 @@ int main()
     }
     return 0;
 }
-    
+
+double get_value()
+{
+    double a;
+    int res = scanf_s("%lf", &a);
+    if (res <= 0.0 || a <= 0.0)
+    {
+        errno = EIO;
+        perror("Некорректные данные");
+        abort();
+    }
+    return a;
+}
+
 int get_choice ()
 {
     int choice;
