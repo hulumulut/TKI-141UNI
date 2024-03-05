@@ -17,7 +17,7 @@ double get_recurrent(int k);
 * @param e - точность вычисления ряда последовательности
 * @return сумма всех членов последовательности, не меньших заданного числа e
 */
-double get_sumwithE(int n, double e);
+double get_sum_epsilon(int n, double e);
 
 /*
 * @brief вычисляет сумму ряда до указанного номера
@@ -45,9 +45,9 @@ int main()
 	printf_s("Задайте число e\n");
 	double e = get_value();
 	double summ = get_sum(n);
-	double sumwithE = get_sumwithE(n, e);
+	double sum_epsilon = get_sum_epsilon(n, e);
 	printf_s("Сумма первых членов последовательности = %.15lf\n", summ);
-	printf_s("Сумма всех членов последовательности, не меньших заданного числа e = %.15lf\n", sumwithE);
+	printf_s("Сумма всех членов последовательности, не меньших заданного числа e = %.15lf\n", sum_epsilon);
 	return 0;
 }
 
@@ -56,7 +56,7 @@ double get_recurrent(int k)
 	return (1.0 / ((k + 2) * (k + 3)));
 }
 
-double get_sumwithE(int n, double e)
+double get_sum_epsilon(int n, double e)
 {
 	double current = 1.0;
 	double sum = current;
